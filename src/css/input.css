@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Tambahkan ini di bawah direktif `@import` */
+@utility pattern-grid {
+  background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px),
+                    linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);
+}
+
+@utility pattern-dots {
+  background-image: radial-gradient(#94a3b8 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}

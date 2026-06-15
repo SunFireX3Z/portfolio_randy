@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randy Saputra | Portofolio Full-Stack Developer</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #ffffff;
+            /* Dot Grid: Warna slate-400 agar terlihat jelas namun tetap bersih */
+            background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-attachment: fixed;
+        }
+        #particles-js {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .hover-gradient-border {
+            transition: all 0.3s ease;
+        }
+        .hover-gradient-border:hover {
+            border-color: transparent !important;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(to bottom right, #fbbf24, #10b981) border-box !important;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 50s linear infinite;
+        }
+        @media (min-width: 1024px) {
+            .animate-marquee {
+                animation-duration: 30s;
+            }
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 15s linear infinite;
+        }
+        /* Efek highlight saat shortcut diklik */
+        #poster-syukron:target, #cert-nasional:target, #poster-hardiknas:target, #cert-hardiknas:target {
+            animation: highlight-pulse 2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-color: #f59e0b !important;
+        }
+        @keyframes highlight-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.8); background-color: rgba(245, 158, 11, 0.1); transform: scale(1); }
+            10% { transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 20px rgba(245, 158, 11, 0); background-color: transparent; transform: scale(1); }
+        }
+        @keyframes soft-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .group:hover .service-icon {
+            animation: soft-pulse 2s infinite ease-in-out;
+        }
+        /* Support click for mobile/touch devices */
+        .dropdown-active .dropdown-menu-container {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+<body class="text-slate-900 font-sans antialiased selection:bg-amber-500 selection:text-white overflow-x-hidden">
+    <!-- Interactive Particles Background -->
+    <div id="particles-js"></div>
+
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-200/80 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-amber-400 font-black text-xl shadow-sm">R</div>
+                <span class="font-bold text-xl tracking-tight text-slate-900">Randy<span class="text-amber-500">.</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide text-slate-600">
+                <a href="#tentang" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">HOME</a>
+                <a href="#about" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">ABOUT</a>
+                <a href="#pengalaman" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">EXPERIENCE</a>
+                <a href="#pendidikan" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">EDUCATION</a>
+                <a href="#sertifikasi" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">CERTIFICATES</a>
+                <a href="#layanan" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">SERVICES</a>
+                <a href="#keahlian" class="hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">TOOLS</a>
+                
+                <!-- Dropdown Projects -->
+                <div id="projects-wrapper" class="relative group">
+                    <button id="projects-btn" class="flex items-center hover:text-slate-900 transition-colors py-2 border-b-2 border-transparent group-hover:border-amber-500 uppercase cursor-pointer">
+                        PROJECTS
+                        <svg class="w-4 h-4 ml-1 text-slate-400 group-hover:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu-container absolute left-0 pt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 -translate-y-2 group-hover:translate-y-0">
+                        <div class="bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden py-2 px-1 space-y-1">
+                            <a href="#proyek" class="flex items-center gap-2 px-4 py-2.5 text-[10px] font-black text-slate-500 hover:text-amber-600 hover:bg-amber-50 rounded-xl transition-all tracking-widest uppercase">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>
+                                Web Development
+                            </a>
+                            <a href="#project-design" class="flex items-center gap-2 px-4 py-2.5 text-[10px] font-black text-slate-500 hover:text-amber-600 hover:bg-amber-50 rounded-xl transition-all tracking-widest uppercase">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122l3.011-3.011m0 0a1.5 1.5 0 10-2.121-2.121L7.41 14.01c-.43.43-.89.831-1.384 1.185a2.25 2.25 0 01-2.961-.254 2.25 2.25 0 01-.254-2.961c.354-.494.755-.954 1.185-1.384l7.907-7.907a2.25 2.25 0 013.182 0l2.828 2.828a2.25 2.25 0 010 3.182l-7.907 7.907z" />
+                                </svg>
+                                Graphic Design
+                            </a>
+                            <a href="#project-uiux" class="flex items-center gap-2 px-4 py-2.5 text-[10px] font-black text-slate-500 hover:text-amber-600 hover:bg-amber-50 rounded-xl transition-all tracking-widest uppercase">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                                </svg>
+                                UI/UX Figma
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hidden md:block">
+                <a href="mailto:randy@example.com" class="inline-flex items-center justify-center px-6 py-2.5 bg-slate-900 text-white hover:bg-slate-800 text-sm font-bold rounded-full transition-all shadow-xs hover:shadow-md">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="tentang" class="relative min-h-[calc(100vh-5rem)] flex items-center py-12 overflow-hidden border-b border-slate-200/80 bg-white/20 scroll-mt-20">
+            <div class="absolute inset-0 opacity-25 pointer-events-none z-0">
+                <div class="absolute top-12 left-12 w-96 h-96 bg-amber-200/40 rounded-full blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
+                <div class="absolute bottom-12 right-12 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl animate-pulse" style="animation-duration: 12s;"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+                <div class="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 shadow-xs">
+                        <span class="w-2 h-2 mr-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Tersedia untuk Proyek & Kolaborasi
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                        Halo! Saya <span class="text-amber-500 underline decoration-amber-500 decoration-2 underline-offset-4">Randy Saputra</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+                        Seorang <span class="text-slate-900 font-medium">Full-Stack Developer</span> sekaligus <span class="text-slate-900 font-medium">Desainer Grafis</span>. Saya berfokus menciptakan sistem yang efisien dengan sentuhan visual yang estetis—mulai dari arsitektur database hingga desain media komunikasi fungsional.
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row justify-start items-center gap-4">
+                        <a href="#proyek" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white hover:bg-slate-800 font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                            Lihat Portofolio
+                        </a>
+                        <a href="https://github.com/randy" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-bold rounded-xl shadow-sm transition-all hover:-translate-y-0.5">
+                            <svg class="w-4 h-4 mr-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Lihat Riwayat Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center order-1 lg:order-2" data-aos="zoom-in" data-aos-duration="1200">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 group animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-3xl rotate-6 scale-98 opacity-60 group-hover:rotate-3 transition-transform duration-300 ease-out"></div>
+                        <div class="absolute inset-0 bg-slate-900 rounded-3xl -rotate-3 scale-98 opacity-5 group-hover:-rotate-1 transition-transform duration-300 ease-out"></div>
+                        
+                        <div class="absolute inset-0 bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl p-3">
+                            <img src="../src/image/Profile.jpg" alt="Foto Randy Saputra" class="w-full h-full object-cover rounded-2xl bg-slate-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden scroll-mt-20 border-t border-slate-200 bg-slate-50/60">
+            <div class="absolute inset-0 opacity-30 pointer-events-none">
+                <div class="absolute top-12 left-20 w-32 h-32 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-60"></div>
+                <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full border-4 border-slate-200/60"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3" data-aos="fade-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">TENTANG SAYA</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Mengenal Lebih Dekat</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <!-- Sisi Kiri: Fokus Programming -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <p class="text-base md:text-lg text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                            Sebagai seorang individu yang bersemangat dalam dunia teknologi dan seni, saya menemukan kepuasan dalam menggabungkan ketelitian pemrograman dengan kebebasan berekspresi visual. Perjalanan saya di bidang ini didorong oleh keinginan untuk menciptakan solusi digital yang tidak hanya berfungsi dengan sempurna, tetapi juga menarik secara estetika dan mudah digunakan.
+                        </p>
+                        <p class="text-base md:text-lg text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                            Di ranah pemrograman, saya berfokus pada pengembangan *backend* yang solid dan efisien, terutama menggunakan PHP *framework* seperti CodeIgniter 4. Saya memiliki pengalaman dalam merancang arsitektur database yang terstruktur, mengoptimalkan kueri, dan memastikan integritas data guna membangun sistem yang tangguh dan skalabel.
+                        </p>
+                    </div>
+
+                    <!-- Bagian Tengah: Foto/Ilustrasi Kecil -->
+                    <div class="lg:col-span-2 flex justify-center py-8 lg:py-0" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="relative w-24 h-24 lg:w-32 lg:h-32 rounded-full p-2 animate-float group">
+                            <!-- Efek Glow di Belakang -->
+                            <div class="absolute inset-0 rounded-full bg-amber-400/20 blur-xl group-hover:bg-amber-500/40 transition-all duration-500"></div>
+
+                            <!-- Border Putus-putus yang berputar pelan -->
+                            <div class="absolute inset-0 rounded-full border-2 border-dashed border-amber-400/60 animate-spin-slow group-hover:border-solid group-hover:border-amber-500 transition-colors duration-300"></div>
+                            
+                            <!-- Ganti src di bawah dengan path foto/ilustrasi Anda -->
+                            <img src="../src/image/icons/LogoIcon.jpg" alt="Creative Illustration" class="relative z-10 w-full h-full object-cover rounded-full opacity-80 filter grayscale group-hover:grayscale-0 transition-all duration-500 shadow-inner">
+                        </div>
+                    </div>
+
+                    <!-- Sisi Kanan: Fokus Design -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <p class="text-base md:text-lg text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+                            Sementara itu, di sisi desain grafis, saya mengeksplorasi kekuatan komunikasi visual untuk menyampaikan pesan secara efektif. Saya mahir dalam menciptakan berbagai aset desain, mulai dari *banner* acara hingga *poster* komersial, dengan perhatian khusus pada tata letak, tipografi, dan teori warna demi menghasilkan karya yang berkesan.
+                        </p>
+                        <div class="pt-4" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#proyek" class="inline-flex items-center justify-center px-8 py-3 bg-amber-500 text-white hover:bg-amber-600 font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                                Lihat Proyek Saya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pengalaman" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden scroll-mt-20 border-t border-slate-200 bg-white/20">
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">EXPERIENCE</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Perjalanan Profesional</h2>
+                </div>
+
+                <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+                    
+                    <!-- Item 1: Freelance -->
+                    <div data-aos="fade-right" class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-amber-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl border border-slate-200 shadow-md group-hover:shadow-lg transition-all duration-300 hover-gradient-border">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-slate-900">Full-Stack Developer (Freelance)</div>
+                                <time class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md whitespace-nowrap">2024 - Sekarang</time>
+                            </div>
+                            <div class="text-slate-500 text-[11px] leading-relaxed">Mengembangkan berbagai solusi web kustom untuk klien, berfokus pada efisiensi sistem inventaris, manajemen data relasional, dan integrasi API.</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: PKL Kecamatan Jatinegara -->
+                    <div data-aos="fade-left" class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-200 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 group-hover:bg-slate-900 group-hover:text-amber-400 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 01.788 0l4 1.714a.999.999 0 01.356.257l2.644-1.131a1 1 0 000-1.84l-7-3zM7 10.382V13c0 .26.04.512.114.75a1 1 0 00.957.75h3.858a1 1 0 00.957-.75c.075-.238.114-.49.114-.75v-2.618l-3.323 1.424a1 1 0 01-.754 0L7 10.382z"></path></svg>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl border border-slate-200 shadow-md group-hover:shadow-lg transition-all duration-300 hover-gradient-border" data-aos-delay="100">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-slate-900">Web Developer & Designer (PKL)</div>
+                                <time class="text-xs font-bold text-slate-400 whitespace-nowrap">3 Bulan</time>
+                            </div>
+                            <div class="text-slate-400 text-2xs uppercase tracking-wider font-semibold mb-1">Kantor Camat Jatinegara</div>
+                            <div class="text-slate-500 text-[11px] leading-relaxed">Membangun sistem informasi jadwal internal, aplikasi perhitungan anggaran, serta merancang banner media komunikasi visual untuk acara resmi.</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Magang Sekolah / BMT -->
+                    <div data-aos="fade-right" class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-200 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 group-hover:bg-slate-900 group-hover:text-amber-400 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl border border-slate-200 shadow-md group-hover:shadow-lg transition-all duration-300 hover-gradient-border" data-aos-delay="200">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-slate-900">Junior Web Developer (Magang)</div>
+                                <time class="text-xs font-bold text-slate-400 whitespace-nowrap">3 Bulan</time>
+                            </div>
+                            <div class="text-slate-400 text-2xs uppercase tracking-wider font-semibold mb-1">Lingkungan Institusi Sekolah</div>
+                            <div class="text-slate-500 text-[11px] leading-relaxed">Mengembangkan aplikasi sistem kasir / Point of Sales (POS) untuk pengelolaan data transaksi Koperasi Sekolah dan BMT.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="pendidikan" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden scroll-mt-20 border-t border-slate-200 bg-slate-100/60">
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">EDUCATION</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Latar Belakang Pendidikan</h2>
+                </div>
+                <div class="max-w-4xl mx-auto w-full space-y-6">
+                     <div data-aos="zoom-in-up" class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left hover-gradient-border">
+                        <div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 p-4 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <img src="../src/image/icons/As-Syafi'iyah.png" alt="Logo SMK" class="w-full h-full object-contain opacity-80 filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+
+                        <!-- Informasi Pendidikan -->
+                        <div class="flex-1 space-y-4">
+                            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                                <div class="space-y-1">
+                                    <h4 class="text-2xl font-extrabold text-slate-900 group-hover:text-amber-600 transition-colors">SMK As-Syafi'iyah</h4>
+                                    <p class="text-amber-600 font-bold text-sm uppercase tracking-wide">Rekayasa Perangkat Lunak (RPL)</p>
+                                </div>
+                                <span class="inline-block px-4 py-1.5 bg-slate-900 text-amber-400 text-xs font-bold rounded-full shadow-sm">2023 - 2026</span>
+                            </div>
+                            <p class="text-slate-600 text-sm md:text-base leading-relaxed">Fokus pada pengembangan perangkat lunak, algoritma, basis data relasional, dan praktik industri terbaik dalam pengembangan aplikasi web modern.</p>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sertifikasi" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden scroll-mt-20 border-t border-slate-200 bg-white/20">
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">CERTIFICATIONS</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Sertifikasi & Penghargaan</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+    
+                    <!-- 1. Siswa Berprestasi -->
+                    <div data-aos="zoom-in-up" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <svg class="w-7 h-7 text-amber-500 grayscale group-hover:grayscale-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">Siswa Berprestasi Jurusan PPLG</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">SMK As-Syafi'iyah Jakarta</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Penghargaan eksklusif yang diberikan kepada siswa terbaik atas pencapaian akademik, kedisiplinan, dan kompetensi keahlian unggul di bidang Pengembangan Perangkat Lunak dan Gim (PPLG) sepanjang angkatan 2025 - 2026.</p>
+                            </div>
+                            <div class="group/thumb relative overflow-hidden rounded-xl border border-slate-100 aspect-video w-32 md:w-44 shadow-sm bg-slate-50">
+                                <img src="../src/image/Certificates/SiswaBerprestasiSertifikat.jpeg" alt="Sertifikat Siswa Berprestasi PPLG" data-description="Sertifikat Siswa Berprestasi Jurusan PPLG Angkatan 2025-2026." class="zoomable w-full h-full object-cover cursor-zoom-in group-hover/thumb:scale-110 transition-transform duration-300">
+                            </div>
+                            <div><span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-200/50 shadow-3xs uppercase tracking-wider">Angkatan 2025 - 2026</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. TOEIC (FIXED: items-start + No Image Placeholder) -->
+                    <div data-aos="zoom-in-up" data-aos-delay="100" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <span class="text-2xl grayscale group-hover:grayscale-0 transition-all">🇬🇧</span>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">TOEIC® Listening and Reading Test</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">PT International Test Center (ITC) Indonesia</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Sertifikasi uji kompetensi standar internasional untuk mengukur kemampuan efisiensi komunikasi berbahasa Inggris dalam lingkungan kerja profesional global.</p>
+                            </div>
+                            <!-- No Image Placeholder -->
+                            <div class="relative overflow-hidden rounded-xl border border-dashed border-slate-200 aspect-video w-32 md:w-44 flex flex-col items-center justify-center bg-slate-50/50 text-slate-400 gap-1 select-none">
+                                <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-[9px] font-medium tracking-wider uppercase text-slate-400">No Image Available</span>
+                            </div>
+                            <div>
+                                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-200/50 shadow-3xs uppercase tracking-wider">Score: 785 / 990</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. BNSP (FIXED: items-start + No Image Placeholder) -->
+                    <div data-aos="zoom-in-up" data-aos-delay="200" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <span class="text-2xl grayscale group-hover:grayscale-0 transition-all">🏆</span>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">Sertifikasi Kompetensi BNSP</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">LSP Teknologi Digital Indonesia</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Sertifikasi profesi resmi skala nasional yang menyatakan kelayakan standardisasi keahlian kerja teknis pada klaster atau skema kompetensi pemrograman situs web.</p>
+                            </div>
+                            <!-- No Image Placeholder -->
+                            <div class="relative overflow-hidden rounded-xl border border-dashed border-slate-200 aspect-video w-32 md:w-44 flex flex-col items-center justify-center bg-slate-50/50 text-slate-400 gap-1 select-none">
+                                <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-[9px] font-medium tracking-wider uppercase text-slate-400">No Image Available</span>
+                            </div>
+                            <div>
+                                <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded-full border border-emerald-200/50 shadow-3xs uppercase tracking-wider">Junior Web Developer • Kompeten</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Juara 1 Nasional (ROFESTION) -->
+                    <div id="cert-nasional" data-aos="zoom-in-up" data-aos-delay="300" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border scroll-mt-24">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <svg class="w-7 h-7 text-amber-500 grayscale group-hover:grayscale-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17H2z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 21v-2a4 4 0 018 0v2M12 7V3m-4 2h8" />
+                                <circle cx="12" cy="7" r="3" fill="currentColor" fill-opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">Juara 1 Lomba Poster Nasional (ROFESTION Vol. 2)</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">UKM Rohis Universitas Sahid (Usahid)</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Meraih peringkat pertama dalam kompetisi desain poster tingkat nasional, bersaing dengan peserta dari berbagai daerah dalam mengolah pesan komunikasi visual yang kreatif dan solutif.</p>
+                            </div>
+                            <div class="group/thumb relative overflow-hidden rounded-xl border border-slate-100 aspect-video w-32 md:w-44 shadow-sm bg-slate-50">
+                                <img src="../src/image/Certificates/UsahidSertifikat.png" alt="Sertifikat Juara 1 Nasional" data-description="Dokumentasi Juara 1 Lomba Poster Nasional (ROFESTION Vol. 2) — UKM Rohis Universitas Sahid." class="zoomable w-full h-full object-cover cursor-zoom-in group-hover/thumb:scale-110 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity pointer-events-none flex items-center justify-center text-[10px] text-white font-bold uppercase tracking-wider">Lihat Sertifikat</div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-200/50 shadow-3xs uppercase tracking-wider">Oktober 2024</span>
+                                <a href="#poster-syukron" class="inline-flex items-center px-3 py-1 bg-slate-900 text-white text-[10px] font-bold rounded-full hover:bg-slate-800 transition-colors shadow-sm">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    Lihat Karya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Juara 1 Internal (FIXED: items-start + No Image Placeholder) -->
+                    <div id="cert-hardiknas" data-aos="zoom-in-up" data-aos-delay="400" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border scroll-mt-24">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <svg class="w-7 h-7 text-amber-500 grayscale group-hover:grayscale-0 transition-all" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">Juara 1 Lomba Desain Poster Hardiknas</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">SMK As-Syafi'iyah Jakarta</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Memenangkan peringkat pertama pada kompetisi internal sekolah dalam rangka Hari Pendidikan Nasional 2025 dengan merancang poster bertema apresiasi tokoh pendidikan nasional.</p>
+                            </div>
+                            <!-- No Image Placeholder -->
+                            <div class="relative overflow-hidden rounded-xl border border-dashed border-slate-200 aspect-video w-32 md:w-44 flex flex-col items-center justify-center bg-slate-50/50 text-slate-400 gap-1 select-none">
+                                <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-[9px] font-medium tracking-wider uppercase text-slate-400">No Image Available</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-200/50 shadow-3xs uppercase tracking-wider">Mei 2025</span>
+                                <a href="#poster-hardiknas" class="inline-flex items-center px-3 py-1 bg-slate-900 text-white text-[10px] font-bold rounded-full hover:bg-slate-800 transition-colors shadow-sm">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    Lihat Karya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Sertifikat PKL (2 Lembar) -->
+                    <div data-aos="zoom-in-up" data-aos-delay="500" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition-all group flex items-start gap-6 hover-gradient-border">
+                        <div class="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group-hover:border-amber-500 transition-colors duration-300">
+                            <svg class="w-7 h-7 text-amber-500 grayscale group-hover:grayscale-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between h-full gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-tight">Sertifikat Praktik Kerja Lapangan (PKL)</h4>
+                                <p class="text-amber-600 text-[10px] font-bold uppercase tracking-wide mt-1">Kecamatan Jatinegara, Kota Administrasi Jakarta Timur</p>
+                                <p class="text-slate-500 text-[11px] mt-2 leading-relaxed">Menyelesaikan program magang industri selama 3 bulan dengan predikat Sangat Baik (Nilai Rata-Rata 87/A). Berhasil menerapkan kompetensi teknis dalam optimalisasi manajemen data administrasi dan penyelesaian tugas operasional wilayah.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="group/thumb relative overflow-hidden rounded-xl border border-slate-100 aspect-video w-24 md:w-32 shadow-sm bg-slate-50">
+                                    <img src="../src/image/Certificates/PKLSertifikatDepan.jpeg" alt="Hal 1" data-description="Sertifikat PKL Kecamatan Jatinegara - Predikat Sangat Baik" class="zoomable w-full h-full object-cover cursor-zoom-in group-hover/thumb:scale-110 transition-transform duration-300">
+                                </div>
+                                <div class="group/thumb relative overflow-hidden rounded-xl border border-slate-100 aspect-video w-24 md:w-32 shadow-sm bg-slate-50">
+                                    <img src="../src/image/Certificates/PKLSertifikatBelakang.jpeg" alt="Hal 2" data-description="Transkrip Nilai PKL - Rata-Rata 87 (A)" class="zoomable w-full h-full object-cover cursor-zoom-in group-hover/thumb:scale-110 transition-transform duration-300">
+                                </div>
+                            </div>
+                            <div><span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-200/50 shadow-3xs uppercase tracking-wider">Januari - Maret 2025</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden scroll-mt-20 border-t border-slate-200 bg-slate-50/60">
+
+            <div class="absolute inset-0 opacity-40 pointer-events-none">
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">SERVICES</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Apa Yang Saya Tawarkan</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div data-aos="fade-up" class="bg-white/80 backdrop-blur-xs border border-slate-200/80 p-8 rounded-3xl shadow-md transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-amber-500/30 group">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-50 shadow-xs flex items-center justify-center border border-slate-100 group-hover:bg-amber-500 group-hover:border-amber-400 group-hover:shadow-lg group-hover:shadow-amber-200 transition-all duration-300">
+                            <svg class="w-7 h-7 text-slate-600 group-hover:text-white transition-colors duration-300 service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6 mb-3">Web Development</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Membangun arsitektur website fungsional berbasis PHP dengan fokus utama pada kekuatan logika *backend*, pengelolaan sesi, serta alur data yang aman.</p>
+                        <ul class="space-y-3 text-xs font-bold tracking-wide text-slate-500 uppercase">
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Logic & System Workflow</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Secure Route Handling</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-white/80 backdrop-blur-xs border border-slate-200/80 p-8 rounded-3xl shadow-md transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-amber-500/30 group">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-50 shadow-xs flex items-center justify-center border border-slate-100 group-hover:bg-amber-500 group-hover:border-amber-400 group-hover:shadow-lg group-hover:shadow-amber-200 transition-all duration-300">
+                            <svg class="w-7 h-7 text-slate-600 group-hover:text-white transition-colors duration-300 service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6 mb-3">Database Architecture</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Perancangan skema data relasional (ERD) yang terstruktur, optimasi kueri MySQL, penataan relasi antar-tabel, serta integrasi database lokal via Laragon.</p>
+                        <ul class="space-y-3 text-xs font-bold tracking-wide text-slate-500 uppercase">
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Query Optimization</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Relational Integrity</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-white/80 backdrop-blur-xs border border-slate-200/80 p-8 rounded-3xl shadow-md transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-amber-500/30 group">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-50 shadow-xs flex items-center justify-center border border-slate-100 group-hover:bg-amber-500 group-hover:border-amber-400 group-hover:shadow-lg group-hover:shadow-amber-200 transition-all duration-300">
+                            <svg class="w-7 h-7 text-slate-600 group-hover:text-white transition-colors duration-300 service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122l3.011-3.011m0 0a1.5 1.5 0 10-2.121-2.121L7.41 14.01c-.43.43-.89.831-1.384 1.185a2.25 2.25 0 01-2.961-.254 2.25 2.25 0 01-.254-2.961c.354-.494.755-.954 1.185-1.384l7.907-7.907a2.25 2.25 0 013.182 0l2.828 2.828a2.25 2.25 0 010 3.182l-7.907 7.907z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6 mb-3">Graphic Design</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Pembuatan media komunikasi visual murni (non-AI) untuk kebutuhan publikasi cetak maupun komersial, mengutamakan estetika tata letak dan hierarki teks.</p>
+                        <ul class="space-y-3 text-xs font-bold tracking-wide text-slate-500 uppercase">
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Banner & Spanduk Acara</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 group-hover:scale-125 transition-transform"></span>
+                                <span>Commercial Poster Design</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="keahlian" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden border-t border-slate-200 scroll-mt-20 bg-white/20">
+            <div class="absolute inset-0 opacity-30 pointer-events-none">
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full border-4 border-slate-200/60"></div>
+                <div class="absolute -bottom-20 -left-20 w-60 h-60 rounded-full border border-slate-200/40"></div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-6 relative z-10 w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">TOOLS & TECH</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Keahlian Teknis</h2>
+                </div>
+
+                <!-- Infinite Marquee Tools Icon -->
+                <div class="mb-16 overflow-hidden relative group/marquee" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                    
+                    <div class="flex animate-marquee whitespace-nowrap gap-16 items-center">
+                        <!-- Set Pertama -->
+                        <div class="flex gap-16 items-center flex-shrink-0">
+                            <img src="../src/image/icons/codeigniter-logo-svg-vector.svg" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="CI4">
+                            <img src="../src/image/icons/Tailwind_CSS_Logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Tailwind">
+                            <img src="../src/image/icons/Bootstrap_logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Bootstrap">
+                            <img src="../src/image/icons/mySQL.d519545a.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="MySQL">
+                            <img src="../src/image/icons/Visual_Studio_Code_1.35_icon.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="VSCode">
+                            <img src="../src/image/icons/Canva-logo-PNG-large-size.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Canva">
+                            <img src="../src/image/icons/Figma-logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Figma">
+                            <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300 rounded-lg" alt="PixelLab">
+                        </div>
+                        <!-- Duplikat untuk loop yang mulus -->
+                        <div class="flex gap-16 items-center flex-shrink-0">
+                            <img src="../src/image/icons/codeigniter-logo-svg-vector.svg" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="CI4">
+                            <img src="../src/image/icons/Tailwind_CSS_Logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Tailwind">
+                            <img src="../src/image/icons/Bootstrap_logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Bootstrap">
+                            <img src="../src/image/icons/mySQL.d519545a.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="MySQL">
+                            <img src="../src/image/icons/Visual_Studio_Code_1.35_icon.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="VSCode">
+                            <img src="../src/image/icons/Canva-logo-PNG-large-size.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Canva">
+                            <img src="../src/image/icons/Figma-logo.svg.png" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300" alt="Figma">
+                            <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" class="h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:scale-110 transition-all duration-300 rounded-lg" alt="PixelLab">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Group: Programming Tools -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-slate-900" data-aos="fade-up">Programming Tools</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div data-aos="fade-up" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/codeigniter-logo-svg-vector.svg" alt="CodeIgniter 4 Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">CodeIgniter 4 (CI4)</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Berpengalaman dalam arsitektur backend PHP dengan CI4, implementasi RESTful API, rute aman, dan manajemen middleware untuk aplikasi web.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/Tailwind_CSS_Logo.svg.png" alt="Tailwind CSS Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Tailwind CSS</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Implementasi desain UI modern dan presisi menggunakan pendekatan utility-first untuk hasil yang ringan dan performan.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/Bootstrap_logo.svg.png" alt="Bootstrap Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Bootstrap</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Pemanfaatan sistem grid dan komponen siap pakai dari Bootstrap untuk mempercepat proses pembuatan antarmuka yang responsif.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/mySQL.d519545a.png" alt="MySQL Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">MySQL & Database Architecture</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Berpengalaman merancang skema ERD, optimasi kueri kompleks, pengaturan Foreign Key, serta manajemen database lokal via Laragon.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="400" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/Visual_Studio_Code_1.35_icon.svg.png" alt="VS Code Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Visual Studio Code</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Lingkungan pengembangan utama untuk menulis kode yang bersih, mengelola repositori Git, serta optimasi alur kerja menggunakan berbagai ekstensi produktivitas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group: Graphic Design Tools -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-slate-900" data-aos="fade-up">Graphic Design Tools</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div data-aos="fade-up" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/Canva-logo-PNG-large-size.png" alt="Canva Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Canva</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Efektif dalam pembuatan desain cepat dan menarik untuk media sosial, presentasi, dan materi pemasaran digital menggunakan platform Canva.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/Figma-logo.svg.png" alt="Figma Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Figma</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Mampu membuat prototipe UI/UX interaktif, wireframe, dan desain antarmuka aplikasi web/mobile menggunakan Figma.</p>
+                                </div>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-50/50 border border-slate-200/60 p-6 rounded-2xl flex items-start space-x-4 shadow-sm transition-all hover:bg-white hover:shadow-md hover-gradient-border duration-200 group">
+                                <div class="w-12 h-12 rounded-xl bg-white flex-shrink-0 flex items-center justify-center border border-slate-200 group-hover:border-amber-500 transition-colors duration-300">
+                                    <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" alt="PixelLab Icon" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-slate-900">Mobile Design Tools (PixelLab)</h4>
+                                    <p class="text-slate-500 text-xs mt-1 leading-relaxed">Mahir dalam membuat desain grafis langsung dari perangkat mobile untuk kebutuhan cepat dan fleksibel, termasuk PixelLab.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="proyek" class="min-h-[calc(100vh-5rem)] flex items-center py-24 relative overflow-hidden border-t border-slate-200 scroll-mt-20 bg-slate-50/60">
+            <div class="absolute inset-0 opacity-20 pointer-events-none">
+                <div class="absolute top-1/3 right-10 w-72 h-72 bg-purple-200/40 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div class="max-w-3xl mb-16 space-y-3" data-aos="fade-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50 inline-block">PORTFOLIO</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Proyek Pilihan</h2>
+                </div>
+
+                <div class="space-y-20">
+                    <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-md group/project overflow-hidden hover-gradient-border">
+                        <div data-aos="fade-right" class="lg:col-span-7 relative">
+                            <div class="hidden lg:block absolute -right-6 top-8 bottom-8 w-px bg-slate-200/60">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-slate-200 group-hover/project:border-amber-500 rounded-full flex items-center justify-center shadow-xs transition-colors duration-300">
+                                    <svg class="w-3.5 h-3.5 text-slate-300 group-hover/project:text-amber-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v12M6 12h12"></path></svg>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/EBookHome.png" alt="Halaman Utama PERPUS ASVI" data-description="Halaman utama website perpustakaan yang menampilkan informasi cepat seperti buku terpopuler, buku harian, dll." class="zoomable w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-zoom-in">
+                                    <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold uppercase tracking-wider pointer-events-none">Beranda Utama</div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/EBookCatalog.png" alt="Katalog Buku" data-description="Halaman katalog digital yang memungkinkan pencarian dan penyaringan koleksi buku." class="zoomable w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-zoom-in">
+                                    <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold uppercase tracking-wider pointer-events-none">Katalog Digital</div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/EBookAboutUs.png" alt="Tentang Kami" data-description="Informasi lengkap mengenai profil institusi dan detail layanan perpustakaan." class="zoomable w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-zoom-in">
+                                    <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold uppercase tracking-wider pointer-events-none">Tentang Kami</div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/EBookNews.png" alt="Halaman Berita" data-description="Portal berita internal perpustakaan untuk update informasi kepada seluruh pengguna." class="zoomable w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-zoom-in">
+                                    <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold uppercase tracking-wider pointer-events-none">Berita Perpustakaan</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-5 space-y-6">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-full text-2xs font-bold uppercase tracking-wider">Full-Stack Dev</span>
+                                <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-800 rounded-full text-2xs font-bold uppercase tracking-wider">Web System</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">PERPUS ASVI — Library Management</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Sistem manajemen perpustakaan terintegrasi yang menangani sirkulasi peminjaman buku fisik, katalog E-Book digital, penyaringan kategori, dan portal berita internal secara real-time.</p>
+                            
+                            <div class="space-y-2 text-sm text-slate-700">
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Pelaporan & Filter Kategori Buku Dinamis</div>
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Dasbor Pemantauan Data Perpustakaan Terpadu</div>
+                            </div>
+                            
+                            <div class="flex gap-2 pt-2">
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/new-php-logo.svg" alt="" class="w-4 h-4 object-contain">
+                                    Native PHP
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/Tailwind_CSS_Logo.svg.png" alt="" class="w-4 h-4 object-contain">
+                                    Tailwind CSS
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/mySQL.d519545a.png" alt="" class="w-4 h-4 object-contain">
+                                    MySQL
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-md group/project overflow-hidden hover-gradient-border">
+                        <div data-aos="fade-right" class="lg:col-span-7 relative">
+                            <div class="hidden lg:block absolute -right-6 top-8 bottom-8 w-px bg-slate-200/60">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-slate-200 group-hover/project:border-amber-500 rounded-full flex items-center justify-center shadow-xs transition-colors duration-300">
+                                    <svg class="w-3.5 h-3.5 text-slate-300 group-hover/project:text-amber-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v12M6 12h12"></path></svg>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/TodolistWeb.png" alt="Preview Aplikasi TodoListWeb" class="zoomable w-full h-full object-cover group-hover:scale-102 transition-transform duration-300 cursor-zoom-in">
+                                </div>
+                                <div class="px-1">
+                                    <h5 class="text-sm font-bold text-slate-900">Antarmuka Dashboard Utama</h5>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Visualisasi manajemen tugas harian yang intuitif dengan statistik progres real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-5 space-y-6">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-2xs font-bold uppercase tracking-wider">Full-Stack Dev</span>
+                                <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-800 rounded-full text-2xs font-bold uppercase tracking-wider">Exam Project</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">TodoListWeb — Task Management</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Aplikasi manajemen tugas berbasis web yang dirancang khusus untuk memenuhi standar Uji Sertifikasi Kompetensi (USK). Berfokus pada kemudahan pelacakan tugas harian dan statistik penyelesaian kerja.</p>
+                            
+                            <div class="space-y-2 text-sm text-slate-700">
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Manajemen Status Tugas Dinamis (Selesai / Belum Selesai)</div>
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Penghitung Statistik Progress & Validasi Data Sisi Server</div>
+                            </div>
+                            
+                            <div class="flex gap-2 pt-2">
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/new-php-logo.svg" alt="" class="w-4 h-4 object-contain">
+                                    Native PHP
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/Bootstrap_logo.svg.png" alt="" class="w-4 h-4 object-contain">
+                                    Bootstrap
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/mySQL.d519545a.png" alt="" class="w-4 h-4 object-contain">
+                                    MySQL
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-md group/project overflow-hidden hover-gradient-border">
+                        <div data-aos="fade-right" class="lg:col-span-7 relative">
+                            <div class="hidden lg:block absolute -right-6 top-8 bottom-8 w-px bg-slate-200/60">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-slate-200 group-hover/project:border-amber-500 rounded-full flex items-center justify-center shadow-xs transition-colors duration-300">
+                                    <svg class="w-3.5 h-3.5 text-slate-300 group-hover/project:text-amber-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v12M6 12h12"></path></svg>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="group relative overflow-hidden rounded-xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                    <img src="../src/image/Website/JadwalKegiatanWeb.png" alt="Preview Website Jadwal Kantor Camat" data-description="Sistem informasi jadwal kegiatan internal Kantor Camat Jatinegara. <span class='text-red-500 font-bold'>Catatan:</span> Beberapa bagian tampilan disensor untuk melindungi kerahasiaan data internal instansi." class="zoomable w-full h-full object-cover group-hover:scale-102 transition-transform duration-300 cursor-zoom-in">
+                                    <!-- Watermark Logo -->
+                                    <div class="absolute bottom-3 right-3 w-8 h-8 md:w-10 md:h-10 opacity-30 pointer-events-none group-hover:opacity-80 transition-opacity duration-300">
+                                        <img src="../src/image/icons/Lambang_Kota_Jakarta_Timur.png" alt="Logo Kantor Camat" class="w-full h-full object-contain filter drop-shadow-sm">
+                                    </div>
+                                </div>
+                                <div class="px-1">
+                                    <h5 class="text-sm font-bold text-slate-900">Portal Jadwal Internal Pegawai</h5>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Sistem manajemen agenda terpusat untuk memantau jadwal dinas dan rapat harian staff.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-5 space-y-6">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-full text-2xs font-bold uppercase tracking-wider">Internship Project</span>
+                                <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-800 rounded-full text-2xs font-bold uppercase tracking-wider">Internal System</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Sistem Informasi Jadwal — Kantor Camat</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Website manajemen agenda kegiatan yang dikembangkan khusus untuk koordinasi internal pegawai Kantor Camat Jatinegara. Berfungsi untuk mendata jadwal rapat, agenda pimpinan, dan kegiatan operasional kantor secara terstruktur dalam satu platform.</p>
+                            
+                            <div class="space-y-2 text-sm text-slate-700">
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Manajemen Agenda & Jadwal Dinas Pegawai Terpusat</div>
+                                <div class="flex items-center"><span class="text-amber-500 mr-2 font-bold">✓</span> Filter Tanggal & Notifikasi Kegiatan Internal Kantor</div>
+                            </div>
+                            
+                            <div class="flex gap-2 pt-2">
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/Google_Apps_Script.svg.png" alt="" class="w-4 h-4 object-contain">
+                                    Google Apps Script
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/css.png" alt="" class="w-4 h-4 object-contain">
+                                    Native CSS
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                    <img src="../src/image/icons/Google_Sheets_logo_(2014-2020).svg.png" alt="" class="w-4 h-4 object-contain">
+                                    Google Sheets
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="project-design" data-aos="fade-up" class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 space-y-12 shadow-md overflow-hidden hover-gradient-border">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+                            <div class="space-y-2">
+                                <div class="flex gap-2">
+                                    <span class="px-3 py-1 bg-purple-50 border border-purple-200 text-purple-800 rounded-full text-2xs font-bold uppercase tracking-wider">Creative Design</span>
+                                    <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-800 rounded-full text-2xs font-bold uppercase tracking-wider">Graphic Design</span>
+                                </div>
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Creative & Visual Asset Designs</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Kumpulan aset komunikasi visual komersial dan publik. Dirancang secara murni tanpa AI menggunakan prinsip tata letak seimbang, tipografi fungsional, dan teori warna yang kuat untuk audiens target.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 self-start sm:self-center">
+                                <span class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-bold text-emerald-700 shadow-3xs uppercase tracking-wide">✓ 100% Handcrafted</span>
+                                <!-- Tags for individual designs will be added below -->
+                            </div>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-delay="100" class="space-y-4">
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400">Featured Banners</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                
+                                <div class="space-y-3">
+                                    <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                        <img src="../src/image/GraphicDesign/GemaRamadhanBanner.png" alt="Desain Banner Gema Ramadhan" class="zoomable w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 cursor-zoom-in">
+                                    </div>
+                                    <div class="px-1">
+                                        <h5 class="text-sm font-bold text-slate-900">Banner Kegiatan Gema Ramadhan</h5>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Desain spanduk bertema islami dengan perpaduan warna hijau-emas yang harmonis, ditujukan sebagai media informasi panggung utama festival keagamaan sekolah.</p>
+                                    </div>
+                                    <div class="flex gap-2 pt-2 px-1">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/Canva-logo-PNG-large-size.png" alt="" class="w-4 h-4 object-contain">
+                                            Canva
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs bg-slate-50 aspect-video flex items-center justify-center">
+                                        <img src="../src/image/GraphicDesign/SilaturahmiBanner.png" alt="Desain Banner Silaturahmi Akrab" class="zoomable w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 cursor-zoom-in">
+                                    </div>
+                                    <div class="px-1">
+                                        <h5 class="text-sm font-bold text-slate-900">Banner Acara Silaturahmi Keluarga</h5>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Spanduk formal-casual bertajuk kebersamaan keluarga besar. Menampilkan struktur tipografi yang bersih dan elemen dekoratif minimalis agar mudah dibaca dari jarak jauh.</p>
+                                    </div>
+                                    <div class="flex gap-2 pt-2 px-1">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/Canva-logo-PNG-large-size.png" alt="" class="w-4 h-4 object-contain">
+                                            Canva
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-delay="200" class="space-y-4 pt-6 border-t border-slate-100">
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400">Featured Posters</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                
+                                <div class="space-y-3">
+                                    <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs bg-slate-50 aspect-[3/4] flex items-center justify-center max-w-md mx-auto w-full">
+                                        <img src="../src/image/GraphicDesign/JokiPoster.png" alt="Desain Poster Komersial - Lynns Store" class="zoomable w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 cursor-zoom-in">
+                                    </div>
+                                    <div class="max-w-md mx-auto w-full px-1">
+                                        <h5 class="text-sm font-bold text-slate-900">Poster Promosi Lynns Store</h5>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Poster komersial joki game daring yang berhasil terjual. Fokus pada skema warna neon futuristik dan tata letak tabel tarif yang highly-readable.</p>
+                                    </div>
+                                    <div class="flex gap-2 pt-2 px-1">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" alt="" class="w-4 h-4 object-contain">
+                                            PixelLab
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div id="poster-syukron" class="space-y-3 scroll-mt-24 rounded-2xl transition-all">
+                                    <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs bg-slate-50 aspect-[3/4] flex items-center justify-center max-w-md mx-auto w-full">
+                                        <img src="../src/image/GraphicDesign/SukronPoster.png" alt="Desain Poster Edukasi / Ucapan" class="zoomable w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 cursor-zoom-in">
+                                    </div>
+                                    <div class="max-w-md mx-auto w-full px-1">
+                                        <h5 class="text-sm font-bold text-slate-900">Poster Dakwah Syukron</h5>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Media edukasi visual Islami bertema rasa syukur. Mengutamakan ilustrasi vokal bertekstur lembut dan penataan tata letak yang harmonis.</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 pt-2 px-1">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" alt="" class="w-4 h-4 object-contain">
+                                            PixelLab
+                                        </span>
+                                        <a href="#cert-nasional" class="inline-flex items-center px-3 py-1 bg-amber-500 text-white text-[10px] font-bold rounded-full hover:bg-amber-600 transition-colors shadow-sm">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 01.788 0l4 1.714a.999.999 0 01.356.257l2.644-1.131a1 1 0 000-1.84l-7-3zM7 10.382V13c0 .26.04.512.114.75a1 1 0 00.957.75h3.858a1 1 0 00.957-.75c.075-.238.114-.49.114-.75v-2.618l-3.323 1.424a1 1 0 01-.754 0L7 10.382z"></path></svg>
+                                            Lihat Penghargaan
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div id="poster-hardiknas" class="space-y-3 scroll-mt-24 rounded-2xl transition-all">
+                                    <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs bg-slate-50 aspect-[3/4] flex items-center justify-center max-w-md mx-auto w-full">
+                                        <img src="../src/image/GraphicDesign/HardiknasPoster.png" alt="Judul Poster Baru" class="zoomable w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 cursor-zoom-in">
+                                    </div>
+                                    <div class="max-w-md mx-auto w-full px-1">
+                                        <h5 class="text-sm font-bold text-slate-900">Poster HARDIKNAS SMK As-Syafi'iyah</h5>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Karya desain poster digital yang sukses meraih Juara 1 pada kompetisi internal sekolah. Berfokus pada komposisi ilustrasi tokoh nasional, keselarasan warna hijau yang segar, serta penataan tipografi yang rapi untuk menyampaikan pesan bertema generasi emas.</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 pt-2 px-1">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/d44414e4bd48d6bef63ebff664f33ada.jpg" alt="" class="w-4 h-4 object-contain">
+                                            PixelLab
+                                        </span>
+                                        <a href="#cert-hardiknas" class="inline-flex items-center px-3 py-1 bg-amber-500 text-white text-[10px] font-bold rounded-full hover:bg-amber-600 transition-colors shadow-sm">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 01.788 0l4 1.714a.999.999 0 01.356.257l2.644-1.131a1 1 0 000-1.84l-7-3zM7 10.382V13c0 .26.04.512.114.75a1 1 0 00.957.75h3.858a1 1 0 00.957-.75c.075-.238.114-.49.114-.75v-2.618l-3.323 1.424a1 1 0 01-.754 0L7 10.382z"></path></svg>
+                                            Lihat Penghargaan
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Figma / UIUX Section -->
+                    <div id="project-uiux" data-aos="fade-up" class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 space-y-12 shadow-md overflow-hidden hover-gradient-border">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+                            <div class="space-y-2">
+                                <div class="flex gap-2">
+                                    <span class="px-3 py-1 bg-blue-50 border border-blue-200 text-blue-800 rounded-full text-2xs font-bold uppercase tracking-wider">UI/UX Design</span>
+                                    <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-800 rounded-full text-2xs font-bold uppercase tracking-wider">App Prototype</span>
+                                </div>
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">UI/UX & Interface Designs</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Perancangan antarmuka pengguna yang intuitif menggunakan Figma. Berfokus pada pembuatan *wireframe*, sistem desain yang konsisten, dan prototipe interaktif untuk memberikan gambaran nyata alur aplikasi sebelum tahap pengembangan.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 self-start sm:self-center">
+                                <span class="px-3 py-1.5 bg-blue-50 border border-blue-200 rounded-xl text-xs font-bold text-blue-700 shadow-3xs uppercase tracking-wide">✓ Interactive Prototyping</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <!-- Figma Project Item -->
+                            <div class="space-y-4">
+                                <div class="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50 aspect-video flex items-center justify-center">
+                                    <!-- src: File gambar gabungan (kolase 3 gambar) -->
+                                    <!-- data-gallery: Daftar file gambar terpisah (pisah-pisah) untuk slider -->
+                                    <img src="../src/image/Figma/JadwalFigma.png" alt="Preview Desain UI/UX" 
+                                         class="zoomable w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" 
+                                         data-gallery="../src/image/Figma/Jadwal - 1.png,../src/image/Figma/Jadwal - 2.png,../src/image/Figma/Jadwal - 3.png">
+                                    <div class="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors duration-300 pointer-events-none"></div>
+                                </div>
+                                <div class="px-1">
+                                    <h4 class="text-lg font-bold text-slate-900">Judul Proyek Desain Anda</h4>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Deskripsi singkat mengenai solusi desain, alur pengguna (user flow), atau gaya visual yang Anda terapkan dalam proyek ini untuk membantu pengguna mencapai tujuannya.</p>
+                                    <div class="flex flex-wrap gap-2 mt-4">
+                                        <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 shadow-3xs flex items-center gap-1.5">
+                                            <img src="../src/image/icons/Figma-logo.svg.png" alt="" class="w-4 h-4 object-contain">
+                                            Figma
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white border-t border-slate-800 py-12 relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+            <div>
+                <h3 class="text-lg font-bold tracking-tight uppercase text-amber-400">Randy Saputra</h3>
+                <p class="text-xs text-slate-400 mt-1">DEVELOPER • EDITION 2026</p>
+            </div>
+            <div class="flex items-center space-x-6 text-sm font-semibold tracking-wide">
+                <a href="mailto:randysaputra1203@gmail.com" class="text-slate-300 hover:text-white transition-colors">randysaputra1203@gmail.com</a>
+                <a href="https://github.com/randy" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <div id="lightbox" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 ease-in-out cursor-zoom-out">
+        <!-- Gallery Counter -->
+        <div id="lightbox-counter" class="absolute top-6 left-1/2 -translate-x-1/2 text-white/70 text-xs font-bold tracking-widest hidden z-10">1 / 1</div>
+        
+        <div class="relative max-w-[90vw] max-h-[85vh] transition-transform duration-300 scale-95 origin-center">
+            <!-- Slider Navigation -->
+            <button id="lightbox-prev" class="absolute -left-12 md:-left-20 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-all hidden p-4 group/nav z-20">
+                <svg class="w-8 h-8 md:w-12 md:h-12 group-hover/nav:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <img id="lightbox-img" src="" alt="Zoomed View" class="w-auto h-auto max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain border border-slate-800">
+            
+            <button id="lightbox-next" class="absolute -right-12 md:-right-20 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-all hidden p-4 group/nav z-20">
+                <svg class="w-8 h-8 md:w-12 md:h-12 group-hover/nav:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+
+            <div id="lightbox-caption" class="absolute -bottom-16 left-0 right-0 text-center text-white text-sm font-medium bg-slate-900/50 backdrop-blur-md py-2 px-4 rounded-lg border border-white/10 opacity-0 transition-opacity duration-300 hidden"></div>
+            <button id="lightbox-close" class="absolute -top-12 right-0 text-white hover:text-amber-400 bg-slate-900/80 backdrop-blur-xs p-2 rounded-full transition-all text-xs font-bold flex items-center space-x-1 shadow-md">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span>Tutup</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Particles.js
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 50,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#f59e0b", "#94a3b8", "#cbd5e1"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1.5,
+                            "size_min": 1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#cbd5e1",
+                        "opacity": 0.35,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "window",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 160,
+                            "line_linked": {
+                                "opacity": 0.6
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 3
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            const zoomElements = document.querySelectorAll('.zoomable');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxContainer = lightbox.querySelector('div');
+            const lightboxCounter = document.getElementById('lightbox-counter');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            
+            let currentGallery = [];
+            let currentImgIdx = 0;
+
+            const updateLightboxContent = () => {
+                lightboxImg.setAttribute('src', currentGallery[currentImgIdx]);
+                
+                if (currentGallery.length > 1) {
+                    lightboxPrev.classList.remove('hidden');
+                    lightboxNext.classList.remove('hidden');
+                    lightboxCounter.classList.remove('hidden');
+                    lightboxCounter.textContent = `${currentImgIdx + 1} / ${currentGallery.length}`;
+                } else {
+                    lightboxPrev.classList.add('hidden');
+                    lightboxNext.classList.add('hidden');
+                    lightboxCounter.classList.add('hidden');
+                }
+            };
+
+            zoomElements.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    const galleryData = img.getAttribute('data-gallery');
+                    if (galleryData) {
+                        currentGallery = galleryData.split(',');
+                    } else {
+                        currentGallery = [img.getAttribute('src')];
+                    }
+                    currentImgIdx = 0;
+
+                    const alt = img.getAttribute('alt');
+                    const desc = img.getAttribute('data-description');
+
+                    lightboxImg.setAttribute('alt', alt);
+
+                    const caption = document.getElementById('lightbox-caption');
+                    if (desc) {
+                        caption.innerHTML = desc;
+                        caption.classList.remove('hidden');
+                        // Memberikan sedikit waktu agar transisi opacity berjalan setelah hidden dihapus
+                        setTimeout(() => caption.classList.remove('opacity-0'), 10);
+                    } else {
+                        caption.classList.add('hidden', 'opacity-0');
+                    }
+                    
+                    updateLightboxContent();
+                    
+                    lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                    setTimeout(() => {
+                        lightboxContainer.classList.remove('scale-95');
+                        lightboxContainer.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            const closeLightbox = () => {
+                lightboxContainer.classList.remove('scale-100');
+                lightboxContainer.classList.add('scale-95');
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                const caption = document.getElementById('lightbox-caption');
+                caption.classList.add('opacity-0');
+            };
+
+            lightbox.addEventListener('click', closeLightbox);
+            
+            // Slider controls
+            lightboxNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImgIdx = (currentImgIdx + 1) % currentGallery.length;
+                updateLightboxContent();
+            });
+
+            lightboxPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImgIdx = (currentImgIdx - 1 + currentGallery.length) % currentGallery.length;
+                updateLightboxContent();
+            });
+
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight' && !lightbox.classList.contains('pointer-events-none')) lightboxNext.click();
+                if (e.key === 'ArrowLeft' && !lightbox.classList.contains('pointer-events-none')) lightboxPrev.click();
+            });
+
+            // Mobile/Click Dropdown Logic
+            const projectsBtn = document.getElementById('projects-btn');
+            const projectsWrapper = document.getElementById('projects-wrapper');
+
+            projectsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                projectsWrapper.classList.toggle('dropdown-active');
+            });
+
+            // Close dropdown when clicking outside
+            window.addEventListener('click', (e) => {
+                if (!projectsWrapper.contains(e.target)) {
+                    projectsWrapper.classList.remove('dropdown-active');
+                }
+            });
+
+            // Close dropdown when a link inside is clicked (for smoother navigation)
+            const dropdownLinks = projectsWrapper.querySelectorAll('a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    projectsWrapper.classList.remove('dropdown-active');
+                });
+            });
+
+            // Responsive AOS: Ubah slide-in (left/right) menjadi fade-up di mobile
+            if (window.innerWidth < 1024) {
+                const slideElements = document.querySelectorAll('[data-aos="fade-left"], [data-aos="fade-right"]');
+                slideElements.forEach(el => {
+                    el.setAttribute('data-aos', 'fade-up');
+                    el.setAttribute('data-aos-delay', '0'); // Opsional: hilangkan delay agar lebih responsif di HP
+                });
+            }
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+        });
+    </script>
+
+</body>
+</html>
