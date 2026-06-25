@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentGallery = [];
     let currentImgIdx = 0;
+    let currentDescriptions = [];
 
     const updateLightboxContent = () => {
         lightboxImg.setAttribute('src', currentGallery[currentImgIdx]);
 
         if (currentGallery.length > 1) {
+            // Tampilkan navigasi dan counter jika ada galeri
             lightboxPrev.classList.remove('hidden');
             lightboxNext.classList.remove('hidden');
             lightboxCounter.classList.remove('hidden');
@@ -23,6 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxNext.classList.add('hidden');
             lightboxCounter.classList.add('hidden');
         }
+
+        // Update caption berdasarkan gambar saat ini
+        const caption = document.getElementById('lightbox-caption');
+        const currentDesc = currentDescriptions[currentImgIdx];
+        if (currentDesc && currentDesc.trim() !== '') {
+            caption.innerHTML = currentDesc;
+            caption.classList.remove('hidden');
+            setTimeout(() => caption.classList.remove('opacity-0'), 10);
+        } else {
+            caption.classList.add('hidden', 'opacity-0');
+        }
     };
 
     zoomElements.forEach(img => {
@@ -31,27 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const galleryData = img.getAttribute('data-gallery');
             if (galleryData) {
-                currentGallery = galleryData.split(',');
+                currentGallery = galleryData.split(',').map(s => s.trim());
             } else {
                 currentGallery = [img.getAttribute('src')];
             }
             currentImgIdx = 0;
 
-            const alt = img.getAttribute('alt');
-            const desc = img.getAttribute('data-description');
-
-            lightboxImg.setAttribute('alt', alt);
-
-            const caption = document.getElementById('lightbox-caption');
-            if (desc) {
-                caption.innerHTML = desc;
-                caption.classList.remove('hidden');
-                // Memberikan sedikit waktu agar transisi opacity berjalan setelah hidden dihapus
-                setTimeout(() => caption.classList.remove('opacity-0'), 10);
+            const descriptionsData = img.getAttribute('data-descriptions');
+            if (descriptionsData) {
+                currentDescriptions = descriptionsData.split('|').map(s => s.trim());
             } else {
-                caption.classList.add('hidden', 'opacity-0');
+                currentDescriptions = [img.getAttribute('data-description') || ''];
             }
-
             updateLightboxContent();
 
             lightbox.classList.remove('opacity-0', 'pointer-events-none');
