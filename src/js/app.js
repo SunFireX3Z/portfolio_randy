@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.setAttribute('src', currentGallery[currentImgIdx]);
 
         if (currentGallery.length > 1) {
-            // Tampilkan navigasi dan counter jika ada galeri
             lightboxPrev.classList.remove('hidden');
             lightboxNext.classList.remove('hidden');
             lightboxCounter.classList.remove('hidden');
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxCounter.classList.add('hidden');
         }
 
-        // Update caption berdasarkan gambar saat ini
+        // Perbarui caption berdasarkan gambar saat ini
         const caption = document.getElementById('lightbox-caption');
         const currentDesc = currentDescriptions[currentImgIdx];
         if (currentDesc && currentDesc.trim() !== '') {
@@ -111,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileSidebar.classList.remove('-translate-x-full');
         mobileSidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
         document.body.classList.add('overflow-hidden');
-        // Tambahkan state ke history agar tombol 'Back' bisa menutup sidebar
         history.pushState({ sidebarOpen: true }, '');
     };
 
@@ -119,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileSidebar.classList.add('-translate-x-full');
         mobileSidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
         document.body.classList.remove('overflow-hidden');
-        // Jika ditutup manual (bukan tombol back), kita hapus state dari history
         if (!isPopState && history.state?.sidebarOpen) {
             history.back();
         }
@@ -129,14 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', () => closeSidebar());
     if (mobileSidebarOverlay) mobileSidebarOverlay.addEventListener('click', () => closeSidebar());
 
-    // Menangani tombol 'Back' di handphone
     window.addEventListener('popstate', (event) => {
         if (!mobileSidebar.classList.contains('-translate-x-full')) {
             closeSidebar(true);
         }
     });
 
-    // Tutup sidebar saat salah satu link diklik
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (!mobileSidebar.classList.contains('-translate-x-full')) {
@@ -150,14 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsWrapper.classList.toggle('dropdown-active');
     });
 
-    // Close dropdown when clicking outside
     window.addEventListener('click', (e) => {
         if (!projectsWrapper.contains(e.target)) {
             projectsWrapper.classList.remove('dropdown-active');
         }
     });
 
-    // Close dropdown when a link inside is clicked (for smoother navigation)
     const dropdownLinks = projectsWrapper.querySelectorAll('a');
     dropdownLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -170,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const slideElements = document.querySelectorAll('[data-aos="fade-left"], [data-aos="fade-right"]');
         slideElements.forEach(el => {
             el.setAttribute('data-aos', 'fade-up');
-            el.setAttribute('data-aos-delay', '0'); // Opsional: hilangkan delay agar lebih responsif di HP
+            el.setAttribute('data-aos-delay', '0');
         });
     }
 
@@ -184,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPosition = window.scrollY;
         const scrollPercentage = scrollPosition / scrollTotal;
 
-        // Update Progress Ring
         const offset = circumference - (scrollPercentage * circumference);
         progressRing.style.strokeDashoffset = offset;
 
